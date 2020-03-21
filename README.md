@@ -33,7 +33,7 @@ pod 'AttributedStringSugar'
 
 ## Author
 
-Elon, sungwoon.park92@gmail.com
+Elon Park, sungwoon.park92@gmail.com
 
 ## License
 
