@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AttributedStringSugar_Example' do
+  pod 'AttributedStringSugar', :path => '../'
+
+  target 'AttributedStringSugar_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
