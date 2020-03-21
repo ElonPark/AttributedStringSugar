@@ -9,7 +9,9 @@
 
 NSAttributedString sugar using builder pattern.
 
-<img src="https://user-images.githubusercontent.com/13270453/77227140-565cbd80-6bc1-11ea-88f6-b5513c2d2247.png" alt="" width="972" height="828" border="0" />
+<p>
+<img src="https://user-images.githubusercontent.com/13270453/77228119-7348bf00-6bc8-11ea-95c4-06c624ff8ca3.png" alt="" width="1007" height="787" border="0" />
+</p>
 
 more detail, see Example
 

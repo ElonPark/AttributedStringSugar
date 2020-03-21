@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/ElonPark/AttributedStringSugar'
-  s.screenshots      = 'https://user-images.githubusercontent.com/13270453/77227140-565cbd80-6bc1-11ea-88f6-b5513c2d2247.png'
+  s.screenshots      = 'https://user-images.githubusercontent.com/13270453/77228119-7348bf00-6bc8-11ea-95c4-06c624ff8ca3.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ElonPark' => 'dev.sungwoon@gmail.com' }
   s.source           = { :git => 'https://github.com/ElonPark/AttributedStringSugar.git', :tag => s.version.to_s }
