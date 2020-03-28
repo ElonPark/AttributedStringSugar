@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## AttributedStringSugar
 
-Copyright (c) 2020 ElonPark <dev.sungwoon@gmail.com>
+Copyright (c) 2020 Elon Park <sungwoon.park92@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

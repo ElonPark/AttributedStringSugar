@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AttributedStringSugar'
-  s.version          = '1.0.1'
+  s.version          = '1.0.3'
   s.swift_versions   = '5.0'
   s.summary          = 'NSAttributedString sugar using builder pattern.'
 
@@ -34,9 +34,7 @@ Pod::Spec.new do |s|
   s.author           = { 'Elon' => 'sungwoon.park92@gmail.com' }
   s.source           = { :git => 'https://github.com/ElonPark/AttributedStringSugar.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '11.0'
-
+  s.ios.deployment_target = '9.0'
   s.source_files = 'AttributedStringSugar/Classes/**/*'
-
   s.frameworks = 'UIKit'
 end

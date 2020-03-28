@@ -1,5 +1,5 @@
 PODS:
-  - AttributedStringSugar (1.0.0)
+  - AttributedStringSugar (1.0.3)
 
 DEPENDENCIES:
   - AttributedStringSugar (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AttributedStringSugar: 72d3120b5cf0bd6dcf3b3c48cf9906659a1c0dba
+  AttributedStringSugar: 0b8844966d7373be1af73314925dbb5bc2c43aab
 
 PODFILE CHECKSUM: 05863bb7faeecdca48a8d55198b9618aa4a1b60d
 
