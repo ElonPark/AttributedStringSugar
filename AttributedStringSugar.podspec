@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AttributedStringSugar'
-  s.version          = '1.0.3'
+  s.version          = '1.0.5'
   s.swift_versions   = '5.0'
   s.summary          = 'NSAttributedString sugar using builder pattern.'
 

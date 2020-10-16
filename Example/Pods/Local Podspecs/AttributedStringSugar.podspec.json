@@ -1,6 +1,6 @@
 {
   "name": "AttributedStringSugar",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "swift_versions": "5.0",
   "summary": "NSAttributedString sugar using builder pattern.",
   "description": "NSAttributedString sugar using builder pattern\nusing like this\n```swift\n  let text = \"Hello\".attribute\n          .systemFont(ofSize: 20, weight: .bold)\n          .paragraphStyle(alignment: .center)\n```",
@@ -15,7 +15,7 @@
   },
   "source": {
     "git": "https://github.com/ElonPark/AttributedStringSugar.git",
-    "tag": "1.0.3"
+    "tag": "1.0.5"
   },
   "platforms": {
     "ios": "9.0"
