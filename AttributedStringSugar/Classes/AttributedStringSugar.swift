@@ -110,9 +110,9 @@ public extension NSMutableAttributedString {
      If you do not specify this attribute, return nil
      
      - Parameters:
-     - name: costom font name. `UIFont(name: "String")`
-     - size: font size
-     - range: Range to apply. The value `nil` means full range.
+        - name: costom font name. `UIFont(name: "String")`
+        - size: font size
+        - range: Range to apply. The value `nil` means full range.
      */
     func customFont(name: String, ofSize size: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString? {
         guard let font = UIFont(name: name, size: size) else {
@@ -177,8 +177,8 @@ public extension NSMutableAttributedString {
      If you do not specify this attribute, the text is rendered in black.
      
      - Parameters:
-     - color: specify the color of the text during rendering.
-     - range: Range to apply. The value `nil` means full range.
+        - color: specify the color of the text during rendering.
+        - range: Range to apply. The value `nil` means full range.
      */
     func foreground(color: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
         return self.addAttribute(.foregroundColor, value: color, range: range)
@@ -190,8 +190,8 @@ public extension NSMutableAttributedString {
      If you do not specify this attribute, no background color is drawn.
      
      - Parameters:
-     - color: specify the color of the background area behind the text.
-     - range: Range to apply. The value `nil` means full range.
+        - color: specify the color of the background area behind the text.
+        - range: Range to apply. The value `nil` means full range.
      */
     func background(color: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
         return self.addAttribute(.backgroundColor, value: color, range: range)
@@ -204,24 +204,64 @@ public extension NSMutableAttributedString {
      as returned by the default method of NSParagraphStyle.
      
      - Parameters:
-     - lineSpacing: The distance in points between the bottom of one line fragment and the top of the next.
-     This value is always nonnegative. This value is included in the line fragment heights in the layout manager.
+        - lineSpacing: The distance in points between the bottom of one line fragment and the top of the next.
+        This value is always nonnegative. This value is included in the line fragment heights in the layout manager.
      
-     - alignment: The text alignment of the receiver.
-     Natural text alignment is realized as left or right alignment depending on the line sweep direction of the
-     first script contained in the paragraph. For a list of alignment constants, see the “Constants” section of
-     NSString UIKit Additions Reference.
+        - minimumLineHeight: The receiver’s minimum height.
+        This property contains the minimum height in points that any line in the receiver will occupy, regardless of the font size or size of any attached graphic. This value must be nonnegative.
      
-     - lineBreakMode: The mode that should be used to break lines in the receiver.
-     This property contains the line break mode to be used laying out the paragraph’s text.
-     For a list of line break constants, see the “Constants” section of NSParagraphStyle.
+        - maximumLineHeight: The receiver’s maximum line height.
+        This property contains the maximum height in points that any line in the receiver will occupy, regardless of the font size or size of any attached graphic. This value is always nonnegative. The default value is 0.
      
-     - range: Range to apply. The value `nil` means full range.
+        Glyphs and graphics exceeding this height will overlap neighboring lines; however, a maximum height of 0 implies no line height limit. Although this limit applies to the line itself, line spacing adds extra space between adjacent lines.
+     
+        - lineHeightMultiple: The line height multiple.
+        The natural line height of the receiver is multiplied by this factor (if positive) before being constrained by minimum and maximum line height. The default value of this property is 0.0.
+     
+        - alignment: The text alignment of the receiver.
+        Natural text alignment is realized as left or right alignment depending on the line sweep direction of the
+        first script contained in the paragraph. For a list of alignment constants, see the “Constants” section of
+        NSString UIKit Additions Reference.
+     
+        - lineBreakMode: The mode that should be used to break lines in the receiver.
+        This property contains the line break mode to be used laying out the paragraph’s text.
+        For a list of line break constants, see the “Constants” section of NSParagraphStyle.
+     
+        - firstLineHeadIndent: The indentation of the first line of the receiver.
+        This property contains the distance (in points) from the leading margin of a text container to the beginning of the paragraph’s first line. This value is always nonnegative.
+
+        - headIndent: The indentation of the receiver’s lines other than the first.
+        This property contains the distance (in points) from the leading margin of a text container to the beginning of lines other than the first. This value is always nonnegative.
+
+        - tailIndent: The indentation of the receiver’s lines other than the first.
+        If positive, this value is the distance from the leading margin (for example, the left margin in left-to-right text). If 0 or negative, it’s the distance from the trailing margin.
+     
+        For example, a paragraph style designed to fit exactly in a 2-inch wide container has a head indent of 0.0 and a tail indent of 0.0. One designed to fit with a quarter-inch margin has a head indent of 0.25 and a tail indent of –0.25.
+     
+        - paragraphSpacingBefore: The distance between the paragraph’s top and the beginning of its text content.
+        This property contains the space (measured in points) between the paragraph’s top and the beginning of its text content. The default value of this property is 0.0.
+     
+        - paragraphSpacing: The space after the end of the paragraph.
+        This property contains the space (measured in points) added at the end of the paragraph to separate it from the following paragraph. This value must be nonnegative. The space between paragraphs is determined by adding the previous paragraph’s paragraphSpacing and the current paragraph’s paragraphSpacingBefore.
+     
+        - baseWritingDirection: The base writing direction for the receiver.
+        If you specify NSWritingDirectionNaturalDirection, the receiver resolves the writing direction to either NSWritingDirectionLeftToRight or NSWritingDirectionRightToLeft, depending on the direction for the user’s language preference setting.
+
+        - range: Range to apply. The value `nil` means full range.
      */
     func paragraphStyle(
         lineSpacing: CGFloat? = nil,
+        minimumLineHeight: CGFloat? = nil,
+        maximumLineHeight: CGFloat? = nil,
+        lineHeightMultiple: CGFloat? = nil,
         alignment: NSTextAlignment? = nil,
         lineBreakMode: NSLineBreakMode? = nil,
+        firstLineHeadIndent: CGFloat? = nil,
+        headIndent: CGFloat? = nil,
+        tailIndent: CGFloat? = nil,
+        paragraphSpacingBefore: CGFloat? = nil,
+        paragraphSpacing: CGFloat? = nil,
+        baseWritingDirection: NSWritingDirection? = nil,
         range: NSRange? = nil
     ) -> NSMutableAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
@@ -229,13 +269,38 @@ public extension NSMutableAttributedString {
         if let lineSpacing = lineSpacing {
             paragraphStyle.lineSpacing = lineSpacing
         }
-        
+        if let minimumLineHeight = minimumLineHeight {
+            paragraphStyle.minimumLineHeight = minimumLineHeight
+        }
+        if let maximumLineHeight = maximumLineHeight {
+            paragraphStyle.maximumLineHeight = maximumLineHeight
+        }
+        if let lineHeightMultiple = lineHeightMultiple {
+            paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        }
         if let alignment = alignment {
             paragraphStyle.alignment = alignment
         }
-        
         if let lineBreakMode = lineBreakMode {
             paragraphStyle.lineBreakMode = lineBreakMode
+        }
+        if let firstLineHeadIndent = firstLineHeadIndent {
+            paragraphStyle.firstLineHeadIndent = firstLineHeadIndent
+        }
+        if let headIndent = headIndent {
+            paragraphStyle.headIndent = headIndent
+        }
+        if let tailIndent = tailIndent {
+            paragraphStyle.tailIndent = tailIndent
+        }
+        if let paragraphSpacingBefore = paragraphSpacingBefore {
+            paragraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
+        }
+        if let paragraphSpacing = paragraphSpacing {
+            paragraphStyle.paragraphSpacing = paragraphSpacing
+        }
+        if let baseWritingDirection = baseWritingDirection {
+            paragraphStyle.baseWritingDirection = baseWritingDirection
         }
         
         return self.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
@@ -250,8 +315,7 @@ public extension NSMutableAttributedString {
      - Parameters:
        - style: The default value for this attribute is styleNone.
      
-       - color: The value of this attribute is a UIColor object. The default value is nil, indicating same as foreground
-     color.
+       - color: The value of this attribute is a UIColor object. The default value is nil, indicating same as foreground color.
      
        - range: Range to apply. The value `nil` means full range.
      */
