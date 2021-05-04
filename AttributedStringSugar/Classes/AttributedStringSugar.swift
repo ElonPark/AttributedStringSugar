@@ -61,7 +61,7 @@ public extension NSMutableAttributedString {
         if let range = range {
             self.addAttribute(key, value: value, range: range)
         } else {
-            let range = NSRange(location: 0, length: self.string.count)
+            let range = NSRange(location: 0, length: length)
             self.addAttribute(key, value: value, range: range)
         }
         
@@ -86,7 +86,7 @@ public extension NSMutableAttributedString {
         if let range = range {
             self.addAttributes(attrs, range: range)
         } else {
-            let range = NSRange(location: 0, length: self.string.count)
+            let range = NSRange(location: 0, length: length)
             self.addAttributes(attrs, range: range)
         }
         
