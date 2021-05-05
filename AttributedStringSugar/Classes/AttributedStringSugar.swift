@@ -320,7 +320,6 @@ public extension NSMutableAttributedString {
        - range: Range to apply. The value `nil` means full range.
      */
     func underline(style: NSUnderlineStyle, color: UIColor? = nil, range: NSRange? = nil) -> NSMutableAttributedString {
-        // - FIXME: 정상 동작 안됨 수정 필요 2020-03-16 02:42:49
         var attributes: [NSAttributedString.Key: Any] = [
             .underlineStyle: style.rawValue
         ]
